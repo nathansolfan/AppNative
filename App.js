@@ -29,11 +29,11 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         <View>
-          <FlatList data={goal} renderItem={(item) => {
+          <FlatList data={courseGoals} renderItem={(itemData) => {
             // FlatList need 2 props - data/renderItem, maps each item
             return (
-            <View style={styles.goalItem} key={goal}>
-            <Text style={styles.goalText}>{goal}</Text>          
+            <View style={styles.goalItem}>
+            <Text style={styles.goalText}>{itemData.item}</Text>          
           </View>
           )}}/>     
             
