@@ -9,11 +9,13 @@ export default function App() {
 
   function goalInputHandler (enteredText) {
     setEnteredGoalText(enteredText)
-  } 
+  }
 
   function addGoalHandler() {
     setCourseGoals((currentCourseGoals) => [
-      ...currentCourseGoals, enteredGoalText
+      ...currentCourseGoals,
+      // transformed enteredGoalText into object
+      { text: enteredGoalText, key: Math.random().toString() },
     ])
   }
 
@@ -27,18 +29,20 @@ export default function App() {
         {/* onPress={}  */}
         <Button title='Add goal' onPress={addGoalHandler}/>
       </View>
+
+
       <View style={styles.goalsContainer}>
-        <View>
-          <FlatList data={courseGoals} renderItem={(itemData) => {
+        
+          <FlatList 
+          data={courseGoals} 
+          renderItem={(itemData) => {
             // FlatList need 2 props - data/renderItem, maps each item
             return (
             <View style={styles.goalItem}>
-            <Text style={styles.goalText}>{itemData.item}</Text>          
+            <Text style={styles.goalText}>{itemData.item.text}</Text>          
           </View>
-          )}}/>     
-            
-                  
-        </View>
+          )
+          }}/>
       </View>
     </View>
     
