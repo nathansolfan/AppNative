@@ -41,7 +41,7 @@ export default function App() {
           renderItem={(itemData) => {
             // FlatList need 2 props - data/renderItem, maps each item
             return (
-              <GoalItem/>            
+              <GoalItem text={itemData.item.text} />            
           )
           }}/>
       </View>
