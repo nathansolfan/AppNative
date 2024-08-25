@@ -38,9 +38,7 @@ export default function App() {
           renderItem={(itemData) => {
             // FlatList need 2 props - data/renderItem, maps each item
             return (
-            <View style={styles.goalItem}>
-            <Text style={styles.goalText}>{itemData.item.text}</Text>          
-          </View>
+            
           )
           }}/>
       </View>
@@ -93,16 +91,7 @@ const styles = StyleSheet.create({
     flex: 5,
   },
 
-  goalItem: {
-    margin: 8,
-    padding: 6,
-    borderRadius: 6,
-    backgroundColor: '#5e0acc',   
-  },
-
-  goalText: {
-    color: 'white',
-  }
+  
 });
 
 
