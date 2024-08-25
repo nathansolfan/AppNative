@@ -2,19 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import GoalItem from './components/GoalItem';
-
+import GoalInput from './components/GoalInput';
 
 
 export default function App() {
+  const [courseGoals, setCourseGoals] = useState([])  
 
-  const [enteredGoalText, setEnteredGoalText] = useState('');
-  const [courseGoals, setCourseGoals] = useState([])
-
-  function goalInputHandler (enteredText) {
-    setEnteredGoalText(enteredText)
-  }
-
-  function addGoalHandler() {
+  function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
       // transformed enteredGoalText into object
@@ -24,25 +18,15 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput 
-        style={styles.textInput} 
-        placeholder='Your course goal' 
-        onChangeText={goalInputHandler}/>
-        {/* onPress={}  */}
-        <Button title='Add goal' onPress={addGoalHandler}/>
-      </View>
-
-
-      <View style={styles.goalsContainer}>
-        
+      {/* onAddGoal is passed from new component`s prop */}
+      {/* on the prop, pass the function */}
+      <GoalInput onAddGoal={addGoalHandler}/>
+      <View style={styles.goalsContainer}>        
           <FlatList 
           data={courseGoals} 
           renderItem={(itemData) => {
             // FlatList need 2 props - data/renderItem, maps each item
-            return (
-              <GoalItem text={itemData.item.text} />            
-          )
+            return <GoalItem text={itemData.item.text}/>
           }}/>
       </View>
     </View>
@@ -68,27 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
 
-  inputContainer: {
-    flex: 1,
-    // column is standard
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-    
-  },
-
-  textInput: {
-    
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%',
-    marginRight: 8,
-    // padding so text is not on the edge
-    padding: 8
-  },
+  
 
   goalsContainer: {
     flex: 5,
