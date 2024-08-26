@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 24,
+        padding: 16,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',        
       },
@@ -59,18 +60,18 @@ const styles = StyleSheet.create({
       textInput: {        
         borderWidth: 1,
         borderColor: '#cccccc',
-        width: '70%',
-        marginRight: 8,
+        width: '90%',
         // padding so text is not on the edge
         padding: 8
       },
 
       buttonContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop: 16,
       },
 
       button: {
-        width: '40%',
+        width: '30%',
         marginHorizontal: 8
       }
 })
