@@ -16,6 +16,13 @@ export default function App() {
     ])
   }
 
+  function deleteGoalHandler(id) {
+    setCourseGoals((currentCourseGoals) => {
+      return currentCourseGoals.filter((goal) => goal.id !== id)
+
+    })
+  }
+
   return (
     <View style={styles.appContainer}>
       {/* onAddGoal is passed from new component`s prop */}
@@ -26,7 +33,11 @@ export default function App() {
           data={courseGoals} 
           renderItem={(itemData) => {
             // FlatList need 2 props - data/renderItem, maps each item
-            return <GoalItem text={itemData.item.text}/>
+            return <GoalItem 
+            text={itemData.item.text}
+            // pass the id to the prop 
+            id={itemData.item.id}
+            onDeleteItem={deleteGoalHandler}/>
           }}/>
       </View>
     </View>

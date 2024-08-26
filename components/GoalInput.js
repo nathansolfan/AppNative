@@ -11,6 +11,8 @@ function GoalInput(props) {
     // instead of passing the props. improve the props and pass it as func
     function addGoalHandler() {
         props.onAddGoal(enteredGoalText);
+        // empty string once goal is added
+        setEnteredGoalText('');
     }
 
     return (
@@ -18,7 +20,10 @@ function GoalInput(props) {
         <TextInput 
         style={styles.textInput} 
         placeholder='Your course goal' 
-        onChangeText={goalInputHandler}/>
+        onChangeText={goalInputHandler}
+        value={enteredGoalText}/>
+        
+
         {/* onPress={}  */}
         <Button title='Add goal' onPress={addGoalHandler}/>
       </View>
