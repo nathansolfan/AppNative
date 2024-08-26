@@ -15,6 +15,8 @@ export default function App() {
       // transformed enteredGoalText into object
       { text: enteredGoalText, key: Math.random().toString() },
     ])
+    // the ADD GOAL button can also close the MODAL
+    endAddGoalHanlder();
   }
 
   function deleteGoalHandler(id) {
@@ -28,6 +30,14 @@ export default function App() {
     setModalIsVisible(true)
   }
 
+  function endAddGoalHanlder() {
+    setModalIsVisible(false)
+  }
+
+
+
+
+
   return (
     /* onAddGoal is passed from new component`s prop */
       /* on the prop, pass the function */
@@ -40,7 +50,10 @@ export default function App() {
     onPress={startAddGoalHandler}
     />
     {/* if modal is true, display GoalInput */}
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler}/>
+      <GoalInput 
+      visible={modalIsVisible} 
+      onAddGoal={addGoalHandler} 
+      onCancel={endAddGoalHanlder}/>
       <View style={styles.goalsContainer}>        
           <FlatList 
           data={courseGoals} 
