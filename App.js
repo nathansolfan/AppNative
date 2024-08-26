@@ -6,7 +6,7 @@ import GoalInput from './components/GoalInput';
 
 
 export default function App() {
-  const [modelIsVisible, setModalIsVisible] = useState(false)
+  const [modalIsVisible, setModalIsVisible] = useState(false)
   const [courseGoals, setCourseGoals] = useState([])  
 
   function addGoalHandler(enteredGoalText) {
@@ -37,9 +37,10 @@ export default function App() {
     color="#5e0acc"
     // create the state for Modal, setting false to start
     // display GoalInput conditionally with the button
-    onPress={startAddGoalHandler}/>
+    onPress={startAddGoalHandler}
+    />
     {/* if modal is true, display GoalInput */}
-      { modelIsVisible && <GoalInput onAddGoal={addGoalHandler}/>}
+      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler}/>
       <View style={styles.goalsContainer}>        
           <FlatList 
           data={courseGoals} 
