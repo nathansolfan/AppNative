@@ -39,8 +39,10 @@ export default function App() {
 
 
   return (
-    /* onAddGoal is passed from new component`s prop */
-      /* on the prop, pass the function */
+    <>
+    <StatusBar style='light'/>
+    {/* /* onAddGoal is passed from new component`s prop */
+    /* on the prop, pass the function */}
     <View style={styles.appContainer}>      
     <Button 
     title="Add new Goal"
@@ -67,7 +69,7 @@ export default function App() {
           }}/>
       </View>
     </View>
-    
+    </>    
   );
 }
 
@@ -78,15 +80,12 @@ export default function App() {
 </ScrollView> */}
 
 
-
-
-
-
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     paddingTop: 50,
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
+    backgroundColor: '#1e085a'
   },
 
   
